@@ -179,7 +179,8 @@ rxy1 = rz.multiply(rx)  # note the opposite order
 rxy.isSame(rxy1, 1e-15) # True  1e-15 is a tolerance that allows for finite precision error
 ```
 
-Note that since rotation axes are stored normalized, `rxy.Axis` returns Vector(0.57735026919, 0.57735026919, 0.57735026919))  This is the case for the`Placement.Rotation.Axis`property of a Placement.
+Note that since rotation axes are stored normalized, `rxy.Axis` returns Vector(0.57735026919, 0.57735026919, 0.57735026919))  This is likewise the case for the`Placement.Rotation.Axis`property of a Placement.  When you enter an axis into a placement rotation dialog, it need not be normalized.  The code replaces your entry with the normalized version.
+
 
 Note that the `rot1.isSame(rot2, tolerance)`method tests `True` if `rot1` and `rot2` create the same result.  For instance, `Rotation(Vector(0, 0, 1), 90)`, `Rotation(Vector(0, 0, 1), -270)`and `Rotation(Vector(0, 0, -1), 270)` test `True` with `isSame`even though their `Axis` and `Angle`properties differ, and are stored as created.
 
