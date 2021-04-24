@@ -179,6 +179,23 @@ rxy1 = rz.multiply(rx)  # note the opposite order
 rxy.isSame(rxy1, 1e-15) # True  1e-15 is a tolerance that allows for finite precision error
 ```
 
+Note that since rotation axes are stored normalized, `rxy.Axis` returns Vector(0.57735026919, 0.57735026919, 0.57735026919))  This is the case for the`Placement.Rotation.Axis`property of a Placement.
+
+Note that the `rot1.isSame(rot2, tolerance)`method tests `True` if `rot1` and `rot2` create the same result.  For instance, `Rotation(Vector(0, 0, 1), 90)`, `Rotation(Vector(0, 0, 1), -270)`and `Rotation(Vector(0, 0, -1), 270)` test `True` with `isSame`even though their `Axis` and `Angle`properties differ, and are stored as created.
+
+#### slerp (Spherical Linear Interpolation.)
+
+This is a function widely used in animation. Suppose you wanted to smoothly rotate an object from one orientation, `rot1` to another, `rot2`. You would need to create a series of intermediate orientations. `rot1.slerp(rot2, 0.3)` creates a rotation 30% of the way between the two.  As a simple example:
+
+```
+rot1 = Rotation(Vector(0, 0, 1), 30)
+rot2 = Rotation(Vector(0, 0, 1), 80)
+rotbetween = rot1.slerp(rot2, 0.3) 
+rotbetween.Angle # pi/4 = 45 degrees = 30 + 0.3*(80 - 30)
+```
+
+This example is simple because `rot1` and `rot2` happen to have the same axis. Slerp works in the general case.  [](https://en.wikipedia.org/wiki/Slerp)
+
 
 
 ### Some other Vector Methods
