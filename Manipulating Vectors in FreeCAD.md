@@ -179,16 +179,11 @@ rzx1 = rz.multiply(rx)  # note the opposite order
 rzx.isSame(rzx1, 1e-15) # True  1e-15 is a tolerance that allows for finite precision error
 ```
 
-![r0](/Users/ed/Documents/freecadmodels/docs/r0.png)  Before rotation
+![r0](r0.png)  Before rotation
 
-![rz](/Users/ed/Documents/freecadmodels/docs/rz.png) After rz
+![rz](rz.png) After rz
 
-![rzx](/Users/ed/Documents/freecadmodels/docs/rzx.png) After rzx
-
-
-
-
-
+![rzx](rzx.png) After rzx
 
 
 Note that since rotation axes are stored normalized, `rxy.Axis` returns Vector(0.57735026919, 0.57735026919, 0.57735026919))  This is likewise the case for the`Placement.Rotation.Axis`property of a Placement.  When you enter an axis into a placement rotation dialog, it need not be normalized.  The code replaces your entry with the normalized version.
