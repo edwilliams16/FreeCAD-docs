@@ -174,10 +174,22 @@ What is easily confused here is that in above case the successive rotations are 
 ```
 rz = Rotation(Vector(0, 0, 1), 90)
 rx = Rotation(Vector(1, 0 ,0), 90)
-rxy = Rotation(Vector(1, 1, 1), 120) #this is you what you should get if you do rz then rx
-rxy1 = rz.multiply(rx)  # note the opposite order
-rxy.isSame(rxy1, 1e-15) # True  1e-15 is a tolerance that allows for finite precision error
+rzx = Rotation(Vector(1, 1, 1), 120) #this is you what you should get if you do rz then rx
+rzx1 = rz.multiply(rx)  # note the opposite order
+rzx.isSame(rzx1, 1e-15) # True  1e-15 is a tolerance that allows for finite precision error
 ```
+
+![r0](/Users/ed/Documents/freecadmodels/docs/r0.png)  Before rotation
+
+![rz](/Users/ed/Documents/freecadmodels/docs/rz.png) After rz
+
+![rzx](/Users/ed/Documents/freecadmodels/docs/rzx.png) After rzx
+
+
+
+
+
+
 
 Note that since rotation axes are stored normalized, `rxy.Axis` returns Vector(0.57735026919, 0.57735026919, 0.57735026919))  This is likewise the case for the`Placement.Rotation.Axis`property of a Placement.  When you enter an axis into a placement rotation dialog, it need not be normalized.  The code replaces your entry with the normalized version.
 
