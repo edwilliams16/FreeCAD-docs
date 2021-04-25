@@ -36,7 +36,7 @@ The length of the vector v1 is given by Pythagoras' theorem (in 3D):
 
 ```
 import math
-math.sqrt(v1.x * v1.x + v1.y * v1.y + v1.y * v1.y)
+math.sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z)
 ```
 
 or much more conveniently by the builtin method
