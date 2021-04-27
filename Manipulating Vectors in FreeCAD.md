@@ -8,7 +8,7 @@ v1 = Vector(1, 2, 3)
 v2 = Vector(4, 5, 6)
 ```
 
-creates a vector *v1* whose x-, y-, and z-components are 1, 2, 3 , respectively.
+creates a vector `v1` whose x-, y-, and z-components are 1, 2, 3 , respectively.
 
 The result of adding the two vectors, tip to tail is given by
 
@@ -19,7 +19,7 @@ v1.add(v2)
 but much more conveniently by:
 
 ```
-v1 + V2
+v1 + v2
 ```
 
 because the + operator has been overloaded, resulting the vector `Vector(5, 7, 9)`
@@ -51,7 +51,7 @@ We can use a vector to represent a direction in space. For this purpose, since t
 v1.normalize() # unit vector in the direction of v1
 ```
 
-This gives us alternative way of creating vectors. If we'd like, for instance, to create a vector in the direction of *v1* with the length of *v2*, we could use:
+This gives us alternative way of creating vectors. If we'd like, for instance, to create a vector in the direction of `v1` with the length of `v2`, we could use:
 
 ```
 v2.Length * v1.normalize()
@@ -67,7 +67,8 @@ One is the dot product [](https://en.wikipedia.org/wiki/Dot_product)
 v1.dot(v2)  # or v2.dot(v1)
 ```
 
-This can be shown to be equal to the product of their two lengths with the cosine of the angle between them.  It is thus, in some sense, the projection of one vector on the other. It can be used to calculate the angle between the two (non-zero) vectors:
+In terms of components, if `v1 = Vector(v1x, v1y, v1z)` and `v2 = Vector(v2x, v2y, v2z)`, then `v1.dot(v2) = v1x*v2x + v1y*v2y + v1z*v2z`
+Alternatively, this can be shown to be equal to the product of their two lengths with the cosine of the angle between them.  It is thus, in some sense, the projection of one vector on the other. It can be used to calculate the angle between the two (non-zero) vectors:
 
 ```
 angle = math.acos(v1.dot(v2)/(v1.Length * v2.Length))
@@ -84,6 +85,8 @@ angle = v1.getAngle(v2)
 The *cross product* of two vectors `v1` and `v2` creates a third vector, perpendicular to both of them, that is, normal to the plane containing `v1` and `v2` https://en.wikipedia.org/wiki/Cross_product
 
 Its length is given by the product of the lengths of `v1` and `v2` with the sine of the angle between them. It thus vanishes if `v1` and `v2` are parallel.
+
+In component form, `v1.cross(v2) = Vector(v1y*v2z - v1z*v2y, v1z*v2x - v1x*v2z, v1x*v2y - v1y*v2x)`
 
 Another way of stating this is that the length of `v1.cross(v2)` is the area of the parallelogram defined by `v1` and `v2`. Note that `v1.cross(v2)`and `v2.cross(v1)` have opposite signs, but `v1.dot(v2)` and `v2.dot(v1)`are equal.
 
