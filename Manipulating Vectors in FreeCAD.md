@@ -96,6 +96,13 @@ A test to check if, within numerical error, two (non-zero) vectors are parallel 
 def isParallel(v1, v2):
     return (v1.cross(v2)).Length <= 1e-7 * v1.Length *  v2.Length
 ```
+Similarly, 
+```
+def isPerpendicular(v1, v2):
+    return v1.dot(v2) <= 1e-7 * v1.Length * v2.Length
+```
+
+These tests both return `True` if either vector has zero length. If you require `False`, replace `<=` with `<`.
 
 ### Rotations
 
